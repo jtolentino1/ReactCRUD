@@ -3,6 +3,8 @@ TODO
         - Email
             - add regex for email with verification       
         - Fix chip dropdown label not expanding properly 
+        - Location, make sure dropdown is scrollable and starts at the 
+        bottom of the dropdown menu (like location)
         - Once submitted, remove everything and show "submitted!"
 
     - View Database
