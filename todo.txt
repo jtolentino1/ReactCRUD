@@ -1,0 +1,12 @@
+TODO
+    - Finish Entry.js 
+        - Email
+            - add regex for email with verification       
+        - Fix chip dropdown label not expanding properly 
+        - Once submitted, remove everything and show "submitted!"
+
+    - View Database
+        - Show each person, change items when clicking on table
+
+FUTURE PLANS
+    - Add Database Functionality

@@ -8,12 +8,10 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
 function Home() {
-  let navigate = useNavigate();
   return (
       <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -29,8 +27,9 @@ function Home() {
               <Typography variant="h6" align="center" color="text.secondary" paragraph>
                 Built using React, FastAPI, and MongoDB
               </Typography>
-              <Stack sx={{ pt: 1 }} direction="row" spacing={0} justifyContent="center">
-                <Button variant="contained" onClick={() => {navigate("/entry")}}>Get Started</Button>
+              <Stack sx={{ pt: 1 }} direction="row" spacing={1} justifyContent="center">
+                <Button variant="contained" href="/entry">Enter Data</Button>
+                <Button variant="outlined" href="/view">View Database</Button>
               </Stack>
             </Container>
           </Box>
