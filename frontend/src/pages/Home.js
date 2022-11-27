@@ -27,7 +27,7 @@ function Home() {
                 Hello and welcome to my simple CRUD React App. 
               </Typography>
               <Typography variant="h6" align="center" color="text.secondary" paragraph>
-                Built using React, Node.js, FastAPI, and MongoDB
+                Built using React, FastAPI, and MongoDB
               </Typography>
               <Stack sx={{ pt: 1 }} direction="row" spacing={0} justifyContent="center">
                 <Button variant="contained" onClick={() => {navigate("/entry")}}>Get Started</Button>
