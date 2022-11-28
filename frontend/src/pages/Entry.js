@@ -61,6 +61,7 @@ export default function Entry() {
     );
   };
 
+
   // fundtion to check if firstName, lastName, email, location, and field are not empty
   const checkForm = () => {
     if (document.getElementById("firstName").value === "") {
@@ -85,13 +86,8 @@ export default function Entry() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     if(checkForm()) {
-      console.log({
-        firstName: data.get('firstName'),
-        lastName: data.get('lastName'),
-        email: data.get('email'),
-        location: data.get('location'),
-        interests: data.get('interests'),
-      });
+      // return JSON string of form data
+      console.log(JSON.stringify(Object.fromEntries(data.entries())));
       navigate('/submitted');
     } else {
       alert("Please fill out all the required Fields before submitting.");
@@ -110,7 +106,7 @@ export default function Entry() {
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <Grid container spacing={2}>
               <Grid item xs={12} sm={5}>
-                <TextField margin="normal" name="firstName" required fullWidth id="firstName" label="First Name" error={true}/>
+                <TextField margin="normal" name="firstName" required fullWidth id="firstName" label="First Name" error={false}/>
               </Grid>
               <Grid item xs={12} sm={2}>
                 <TextField margin="normal" name="middleInit" fullWidth id="firstName" label="Init"/>
@@ -169,5 +165,5 @@ export default function Entry() {
         </Grid>
       </Container>
     </ThemeProvider>
-  );
+    );
 }
