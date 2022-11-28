@@ -86,7 +86,6 @@ export default function Entry() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     if(checkForm()) {
-      // return JSON string of form data
       console.log(JSON.stringify(Object.fromEntries(data.entries())));
       navigate('/submitted');
     } else {

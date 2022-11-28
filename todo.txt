@@ -7,3 +7,5 @@ TODO
 
 FUTURE PLANS
     - Add Database Functionality
+    - Refactor code so it works in a component architecture
+    
