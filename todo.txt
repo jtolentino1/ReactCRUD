@@ -1,9 +1,7 @@
 TODO
-    - Finish Entry.js 
-        - Add red colour to required fields not inputted 
-
     - View Database
         - Show each person, change items when clicking on table
+    - Add database functionality
 
 FUTURE PLANS
     - Add Database Functionality
