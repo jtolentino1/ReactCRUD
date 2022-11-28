@@ -1,11 +1,6 @@
 TODO
     - Finish Entry.js 
-        - Email
-            - add regex for email with verification       
-        - Fix chip dropdown label not expanding properly 
-        - Location, make sure dropdown is scrollable and starts at the 
-        bottom of the dropdown menu (like location)
-        - Once submitted, remove everything and show "submitted!"
+        - Add red colour to required fields not inputted 
 
     - View Database
         - Show each person, change items when clicking on table

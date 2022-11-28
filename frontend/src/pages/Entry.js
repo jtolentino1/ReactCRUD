@@ -47,8 +47,6 @@ export default function Entry() {
   const [location, setLocation] = React.useState("");
   const [field, setField] = React.useState([]);
 
-  let inputProps = {};
-
   const handleChangeLocation = (event) => {
     setLocation(event.target.value);
   };
@@ -112,7 +110,7 @@ export default function Entry() {
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <Grid container spacing={2}>
               <Grid item xs={12} sm={5}>
-                <TextField {...inputProps} margin="normal" name="firstName" required fullWidth id="firstName" label="First Name"/>
+                <TextField margin="normal" name="firstName" required fullWidth id="firstName" label="First Name" error={true}/>
               </Grid>
               <Grid item xs={12} sm={2}>
                 <TextField margin="normal" name="middleInit" fullWidth id="firstName" label="Init"/>
