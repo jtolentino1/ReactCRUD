@@ -1,17 +1,23 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 function View() {
     return (
-        <Grid container justifyContent="center">
-        <Grid item>
-          <p>Welcome to the View Page</p>
-          <Link href="/" variant="body2">
-            {"Go Home"}
-          </Link>
-        </Grid>
+      <Grid container justifyContent="center">
+      <Grid item>
+        <p>Welcome to view page</p>
+      <Stack sx={{ pt: 1 }} direction="row" spacing={1} justifyContent="center">
+        <Button href="/" variant="contained">
+          {"Go Home"}
+        </Button>
+        <Button href="/entry" variant="contained">
+          {"Enter More Data"}
+        </Button>
+      </Stack>
       </Grid>
+    </Grid>
   );
 }
 
