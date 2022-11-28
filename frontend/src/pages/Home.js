@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -25,7 +26,7 @@ function Home() {
                 Hello and welcome to my simple CRUD React App. 
               </Typography>
               <Typography variant="h6" align="center" color="text.secondary" paragraph>
-                Built using React, FastAPI, and MongoDB
+                Built using React, FastAPI, MaterialUI and MongoDB
               </Typography>
               <Stack sx={{ pt: 1 }} direction="row" spacing={1} justifyContent="center">
                 <Button variant="contained" href="/entry">Enter Data</Button>

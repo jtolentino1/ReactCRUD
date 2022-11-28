@@ -20,6 +20,7 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import { Fields } from '../data/Fields';
 import { Locations } from '../data/Locations';
+import { Alert } from '@mui/material';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -47,6 +48,8 @@ export default function Entry() {
   const [location, setLocation] = React.useState("");
   const [field, setField] = React.useState([]);
 
+  const [showErrorMessage, setShowErrorMessage] = React.useState(false);
+
   const handleChangeLocation = (event) => {
     setLocation(event.target.value);
   };
@@ -60,7 +63,6 @@ export default function Entry() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
 
   // fundtion to check if firstName, lastName, email, location, and field are not empty
   const checkForm = () => {
@@ -89,7 +91,7 @@ export default function Entry() {
       console.log(JSON.stringify(Object.fromEntries(data.entries())));
       navigate('/submitted');
     } else {
-      alert("Please fill out all the required Fields before submitting.");
+      setShowErrorMessage(true);
     }
   };
 
@@ -102,20 +104,23 @@ export default function Entry() {
           <Typography component="h1" variant="h5">
             Enter Data to Database
           </Typography>
+          {showErrorMessage && ( 
+          <Alert severity="error" fullWidth sx={{marginTop: 2}}>Please fill out all the required fields before submitting.</Alert>
+          )}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <Grid container spacing={2}>
               <Grid item xs={12} sm={5}>
-                <TextField margin="normal" name="firstName" required fullWidth id="firstName" label="First Name" error={false}/>
+                <TextField margin="normal" name="firstName" required fullWidth id="firstName" label="First Name"/>
               </Grid>
               <Grid item xs={12} sm={2}>
                 <TextField margin="normal" name="middleInit" fullWidth id="firstName" label="Init"/>
               </Grid>
               <Grid item xs={12} sm={5}>
-                <TextField margin="normal" required fullWidth id="lastName" label="Last Name" name="lastName" error={false}/>
+                <TextField margin="normal" required fullWidth id="lastName" label="Last Name" name="lastName"/>
               </Grid>       
             </Grid>
-          <TextField margin="normal" required fullWidth name="email" label="Email Address" id="email" error={false}/>
-          <FormControl margin="normal" fullWidth required helperText="" error={false} id="location-select" >
+          <TextField margin="normal" required fullWidth name="email" label="Email Address" id="email"/>
+          <FormControl margin="normal" fullWidth required helperText="" id="location-select" >
             <InputLabel>Current Location</InputLabel>
             <Select label="Current Location" name="location"
               value={location}
@@ -128,7 +133,7 @@ export default function Entry() {
               ))}
             </Select>
           </FormControl>
-          <FormControl margin="normal" fullWidth required helperText="" error={false} id="interests-chip">
+          <FormControl margin="normal" fullWidth required helperText="" id="interests-chip">
             <InputLabel>Interest(s)</InputLabel>
             <Select label="Interest(s)" name="interests"
               multiple value={field}
