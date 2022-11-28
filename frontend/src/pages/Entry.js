@@ -49,6 +49,11 @@ export default function Entry() {
   const [field, setField] = React.useState([]);
 
   const [showErrorMessage, setShowErrorMessage] = React.useState(false);
+  const [firstNameError, setFirstNameError] = React.useState(false);
+  const [lastNameError, setLastNameError] = React.useState(false);
+  const [emailError, setEmailError] = React.useState(false);
+  const [locationError, setLocationError] = React.useState(false);
+  const [fieldError, setFieldError] = React.useState(false);
 
   const handleChangeLocation = (event) => {
     setLocation(event.target.value);
@@ -66,22 +71,39 @@ export default function Entry() {
 
   // fundtion to check if firstName, lastName, email, location, and field are not empty
   const checkForm = () => {
+    let temp = {}
     if (document.getElementById("firstName").value === "") {
-      return false;
+      temp.firstName = false
+      setFirstNameError(true);
+    } else {
+      setFirstNameError(false);
     }
     if (document.getElementById("lastName").value === "") {
-      return false;
+      temp.lastName = false
+      setLastNameError(true);
+    } else {
+      setLastNameError(false);
     }
     if (document.getElementById("email").value === "") {
-      return false;
+      temp.email = false
+      setEmailError(true);
+    } else {
+      setEmailError(false);
     }
     if (location === "") {
-      return false;
+      temp.location = false
+      setLocationError(true);
+    } else {
+      setLocationError(false);
     }
     if (field.length === 0) {
-      return false;
+      temp.field = false
+      setFieldError(true);
+    } else {
+      setFieldError(false);
     }
-    return true;
+    // return true if every value in temp is true
+    return Object.values(temp).every(x => x === true);
   }
 
   const handleSubmit = (event) => {
@@ -110,17 +132,17 @@ export default function Entry() {
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <Grid container spacing={2}>
               <Grid item xs={12} sm={5}>
-                <TextField margin="normal" name="firstName" required fullWidth id="firstName" label="First Name"/>
+                <TextField margin="normal" name="firstName" required fullWidth id="firstName" label="First Name" error={firstNameError}/>
               </Grid>
               <Grid item xs={12} sm={2}>
                 <TextField margin="normal" name="middleInit" fullWidth id="firstName" label="Init"/>
               </Grid>
               <Grid item xs={12} sm={5}>
-                <TextField margin="normal" required fullWidth id="lastName" label="Last Name" name="lastName"/>
+                <TextField margin="normal" required fullWidth id="lastName" label="Last Name" name="lastName" error={lastNameError}/>
               </Grid>       
             </Grid>
-          <TextField margin="normal" required fullWidth name="email" label="Email Address" id="email"/>
-          <FormControl margin="normal" fullWidth required helperText="" id="location-select" >
+          <TextField margin="normal" required fullWidth name="email" label="Email Address" id="email" error={emailError}/>
+          <FormControl margin="normal" fullWidth required helperText="" error={locationError} id="location-select" >
             <InputLabel>Current Location</InputLabel>
             <Select label="Current Location" name="location"
               value={location}
@@ -133,7 +155,7 @@ export default function Entry() {
               ))}
             </Select>
           </FormControl>
-          <FormControl margin="normal" fullWidth required helperText="" id="interests-chip">
+          <FormControl margin="normal" fullWidth required helperText="" error={fieldError} id="interests-chip">
             <InputLabel>Interest(s)</InputLabel>
             <Select label="Interest(s)" name="interests"
               multiple value={field}
